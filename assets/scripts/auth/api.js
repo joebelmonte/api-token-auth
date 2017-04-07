@@ -1,15 +1,15 @@
 'use strict'
 
-const signUp = (data) =>
-  new Promise(function (resolve, reject) {
-    if (Math.random() > 0.5) {
-      resolve('in signUp')
-    } else {
-      const error = new Error('Random')
-      error.data = data
-      reject(error)
-    }
+const config = require('../config.js')
+
+const signUp = (data) => {
+  console.log('data is ', data)
+  return $.ajax({
+    url: config.apiOrigin + '/sign-up',
+    method: 'POST',
+    data
   })
+}
 
 module.exports = {
   signUp
